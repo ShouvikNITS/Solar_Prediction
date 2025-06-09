@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {FaBars} from "react-icons/fa";
+import { AiOutlineThunderbolt } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
 import {useState} from "react";
 
@@ -11,12 +12,12 @@ export default function Navbar() {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     return (
-        <div className = "bg-gray-900/95 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-gray-800">
+        <div className = "bg-gray-900 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <Link href="/" className="flex items-center space-x-2">
                         <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-xl">
-                            {/*image*/}
+                            <AiOutlineThunderbolt className="text-[24px] text-white"/>
                         </div>
                     </Link>
                     <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">Energy Tracker</span>
