@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 import { LuSun } from "react-icons/lu";
 import { FaWind } from "react-icons/fa";
 import { AiOutlineStock } from "react-icons/ai";
@@ -7,7 +7,7 @@ import { CiGlobe } from "react-icons/ci";
 export default function Home() {
   return (
       <div>
-        <Navbar />
+        {/*<Navbar />*/}
           <div className="min-h-screen bg-gray-900">
             <section className="relative from-gray-900 via-gray-800 to-gray-900 py-20 lg:py-24 overflow-hidden">
                 <div className="absolute inset-0 opacity-5"></div>
