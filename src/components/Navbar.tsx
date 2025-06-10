@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {FaBars} from "react-icons/fa";
 import { AiOutlineThunderbolt } from "react-icons/ai";
@@ -11,6 +12,16 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
 
+    const isActive = (path : string) => usePathname() === path
+
+    const navItems = [
+    { path: '/', label: 'Home' },
+    { path: '/Dashboard', label: 'Dashboard' },
+    { path: '/Forecasting', label: 'Forecasting' },
+    { path: '/Analytics', label: 'Analytics' },
+    { path: '/About', label: 'About' },
+  ];
+
     return (
         <div className = "bg-gray-900 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-gray-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,15 +31,22 @@ export default function Navbar() {
                             <AiOutlineThunderbolt className="text-[24px] text-white"/>
                         </div>
                     </Link>
-                    <span className="text-xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">Energy Tracker</span>
+                    <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-blue-600 bg-clip-text text-transparent">Energy Tracker</span>
 
                     <nav className="hidden md:flex items-center space-x-8">
-                        <Link href="/" className="font-medium text-emerald-400">Home</Link>
-                        <Link href="/Analytics" className="font-medium text-gray-300 hover:text-emerald-400">Analytics</Link>
-                        <Link href="/Dashboard" className="font-medium text-gray-300 hover:text-emerald-400">Dashboard</Link>
-                        <Link href="/Forecasting" className="font-medium text-gray-300 hover:text-emerald-400">Forecasting</Link>
-                        <Link href="/About" className="font-medium text-gray-300 hover:text-emerald-400">About</Link>
+                        {navItems.map((items) => (
+                            <Link 
+                            key={items.path}
+                            href={items.path}
+                            className={`transition-colors duration-200 font-medium ${
+                                isActive(items.path)
+                                ? 'text-emerald-300 dark:text-emerald-300'
+                                : 'text-gray-400 dark:text-gray-300 hover:text-emerald-300 dark:hover:text-emerald-300'
+                            }`}>{items.label}</Link>
+                        ))}
                     </nav>
+
+
 
                     <div className="hidden md:flex items-center space-x-4">
                         <button className="px-4 py-2 text-emerald-400 hover:text-emerald-300 duration-200 font-medium">Sign In</button>

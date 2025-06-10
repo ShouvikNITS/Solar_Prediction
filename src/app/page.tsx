@@ -1,4 +1,3 @@
-// import ClientRouter from "@/components/ClientRouter";
 "use client";
 import { LuSun } from "react-icons/lu";
 import { FaWind } from "react-icons/fa";
@@ -7,18 +6,18 @@ import { CiGlobe } from "react-icons/ci";
 
 export default function Home() {
   return (
-      <div>        
+      <div>
           <div className="min-h-screen bg-gray-900">
             <section className="relative from-gray-900 via-gray-800 to-gray-900 py-20 lg:py-24 overflow-hidden">
                 <div className="absolute inset-0 opacity-5"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                     <div className="text-center">
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">Predict Renewable
-                            <span className="block bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">Energy Production</span>
+                            <span className="block bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent h-25">Energy Production</span>
                         </h1>
 
                         <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
-                            Advanced AI-powered forecasting platform that predicts solar and wind energy production using real-time weather data, historical patterns, and machine learning algorithms.
+                            Advanced AI-powered forecasting platform that predicts solar energy production using real-time weather data, historical patterns, and machine learning algorithms.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">

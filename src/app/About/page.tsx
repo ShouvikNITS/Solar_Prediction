@@ -52,20 +52,20 @@ const About: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-200">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 transition-colors duration-200">
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               The Future of Energy
               <span className="block bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                 Forecasting is Here
               </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              EnergyForcast combines cutting-edge artificial intelligence with comprehensive weather data 
-              and historical energy patterns to deliver the most accurate renewable energy production 
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              EnergyForcast combines cutting-edge artificial intelligence with comprehensive weather data
+              and historical energy patterns to deliver the most accurate renewable energy production
               predictions in the industry.
             </p>
           </div>
@@ -77,26 +77,26 @@ const About: React.FC = () => {
                 <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-200">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium">{stat.label}</div>
+                <div className="text-gray-300 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* Features Grid */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-12">
+            <h2 className="text-3xl font-bold text-white text-center mb-12">
               Powerful Features for Energy Professionals
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => {
                 const IconComponent = feature.icon;
                 return (
-                  <div key={index} className="group bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:border-emerald-200 dark:hover:border-emerald-700 transition-all duration-300">
-                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-100 to-blue-100 dark:from-emerald-900/30 dark:to-blue-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-200">
-                      <IconComponent className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                  <div key={index} className="group bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-700 hover:shadow-lg hover:border-emerald-700 transition-all duration-300">
+                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-emerald-900/30 to-blue-900/30 rounded-xl mb-6 group-hover:scale-110 transition-transform duration-200">
+                      <IconComponent className="w-8 h-8 text-emerald-400" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{feature.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl font-semibold text-white mb-4">{feature.title}</h3>
+                    <p className="text-gray-300 leading-relaxed">{feature.description}</p>
                   </div>
                 );
               })}
@@ -106,14 +106,14 @@ const About: React.FC = () => {
           {/* Benefits Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              <h2 className="text-3xl font-bold text-white mb-8">
                 Transform Your Energy Operations
               </h2>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{benefit}</p>
+                    <p className="text-gray-300 leading-relaxed">{benefit}</p>
                   </div>
                 ))}
               </div>
@@ -145,18 +145,18 @@ const About: React.FC = () => {
 
           {/* Technology Stack */}
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            <h2 className="text-3xl font-bold text-white mb-8">
               Built with Industry-Leading Technology
             </h2>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">TensorFlow</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">PyTorch</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">AWS</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">Docker</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">Kubernetes</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">PostgreSQL</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">Redis</div>
-              <div className="text-2xl font-bold text-gray-400 dark:text-gray-500">GraphQL</div>
+              <div className="text-2xl font-bold text-gray-400">TensorFlow</div>
+              <div className="text-2xl font-bold text-gray-400">PyTorch</div>
+              <div className="text-2xl font-bold text-gray-400">AWS</div>
+              <div className="text-2xl font-bold text-gray-400">Docker</div>
+              <div className="text-2xl font-bold text-gray-400">Kubernetes</div>
+              <div className="text-2xl font-bold text-gray-400">PostgreSQL</div>
+              <div className="text-2xl font-bold text-gray-400">Redis</div>
+              <div className="text-2xl font-bold text-gray-400">GraphQL</div>
             </div>
           </div>
         </div>
