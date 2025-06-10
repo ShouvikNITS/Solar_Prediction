@@ -24,9 +24,10 @@ export default function Navbar() {
 
                     <nav className="hidden md:flex items-center space-x-8">
                         <Link href="/" className="font-medium text-emerald-400">Home</Link>
-                        <Link href="/" className="font-medium text-gray-300 hover:text-emerald-400">Dashboard</Link>
-                        <Link href="/" className="font-medium text-gray-300 hover:text-emerald-400">Forecasting</Link>
-                        <Link href="/" className="font-medium text-gray-300 hover:text-emerald-400">About</Link>
+                        <Link href="/Analytics" className="font-medium text-gray-300 hover:text-emerald-400">Analytics</Link>
+                        <Link href="/Dashboard" className="font-medium text-gray-300 hover:text-emerald-400">Dashboard</Link>
+                        <Link href="/Forecasting" className="font-medium text-gray-300 hover:text-emerald-400">Forecasting</Link>
+                        <Link href="/About" className="font-medium text-gray-300 hover:text-emerald-400">About</Link>
                     </nav>
 
                     <div className="hidden md:flex items-center space-x-4">
