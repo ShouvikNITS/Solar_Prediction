@@ -1,10 +1,42 @@
+'use client'
+
 import Navbar from "@/components/Navbar";
 import { LuSun } from "react-icons/lu";
 import { FaWind } from "react-icons/fa";
 import { AiOutlineStock } from "react-icons/ai";
 import { CiGlobe } from "react-icons/ci";
+import {useState, useEffect} from "react";
+import axios from "axios";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 export default function Home() {
+    const [city, setCity] = useState("");
+    const [weatherData, setWeatherData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchData = async ()=>{
+            if(!city){
+                console.log('City not found');
+                return;
+            }
+
+            try{
+                const response = await axios.get(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`
+                );
+                setWeatherData(response.data);
+                console.log(response.data);
+            }catch(err){
+                console.log(err);
+            }
+        }
+
+        fetchData();
+    }, [city]);
+
   return (
       <div>
         <Navbar />
