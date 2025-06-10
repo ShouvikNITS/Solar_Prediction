@@ -2,10 +2,39 @@
 import React, { useState } from 'react';
 import { Sun, Wind, Calendar, MapPin, TrendingUp, Activity, Zap, CloudRain } from 'lucide-react';
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import axios from "axios";
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const Dashboard: React.FC = () => {
   const [selectedTimeRange, setSelectedTimeRange] = useState('24h');
   const [selectedEnergyType, setSelectedEnergyType] = useState('solar');
+  const [city, setCity] = useState("Silchar");
+  const [weather, setWeather] = useState(null);
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCity(e.target.value);
+  };
+
+  const fetchWeather = async (city: string) => {
+    try{
+      const res = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`
+      );
+      setWeather(res.data);
+      console.log(res.data);
+    } catch(err){
+      console.log(err);
+      return;
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && city.trim() !== '') {
+      fetchWeather(city.trim());
+    }
+  };
 
   // Mock data for demonstrations
   const solarData = [
@@ -60,11 +89,15 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-5 h-5 text-gray-400" />
-                <select className="border border-gray-600 rounded-lg px-3 py-2 bg-gray-800 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
-                  <option>San Francisco, CA</option>
-                  <option>Austin, TX</option>
-                  <option>Denver, CO</option>
-                </select>
+                {/*<select className="border border-gray-600 rounded-lg px-3 py-2 bg-gray-800 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">*/}
+                {/*  <option>San Francisco, CA</option>*/}
+                {/*  <option>Austin, TX</option>*/}
+                {/*  <option>Denver, CO</option>*/}
+                {/*</select>*/}
+                <input type="text"
+                       onChange={handleCityChange}
+                       onKeyDown={handleKeyDown}
+                       className="border border-gray-600 rounded-lg px-3 py-2 bg-gray-800 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Enter your city" />
               </div>
               <div className="flex items-center space-x-2">
                 <Calendar className="w-5 h-5 text-gray-400" />
@@ -153,10 +186,10 @@ const Dashboard: React.FC = () => {
                   <CloudRain className="w-6 h-6 text-orange-400" />
                 </div>
                 <span className="text-sm font-medium text-orange-400 bg-orange-900/20 px-2 py-1 rounded-full">
-                  Sunny
+                  {weather?.weather?.[0]?.description ?? "clear sky"}
                 </span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-1">28°C</h3>
+              <h3 className="text-2xl font-bold text-white mb-1">{Math.floor(weather?.main?.temp ?? 25)} °C</h3>
               <p className="text-gray-300 text-sm">Current Weather</p>
             </div>
           </div>
