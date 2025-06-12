@@ -3,6 +3,7 @@ import { LuSun } from "react-icons/lu";
 import { FaWind } from "react-icons/fa";
 import { AiOutlineStock } from "react-icons/ai";
 import { CiGlobe } from "react-icons/ci";
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -22,7 +23,8 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                            <button className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-600 text-white rounded-xl font-semibold text-lg hover:from-emerald-600 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center">Start Forecasting</button>
+                            <Link href="/Forecasting"> <button className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-600 text-white rounded-xl font-semibold text-lg hover:from-emerald-600 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 flex items-center">Start Forecasting</button>
+                            </Link>
                             <button className="px-8 py-4 border-2 border-gray-600 text-gray-300 rounded-xl font-semibold text-lg hover:border-emerald-400 hover:text-emerald-400 transition-all duration-300">Contact Us</button>
                         </div>
 

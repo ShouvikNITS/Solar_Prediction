@@ -7,16 +7,21 @@ import dotenv from "dotenv"
 
 dotenv.config();
 
+interface WeatherData {
+    weather: { description: string }[];
+    main: {temp:number};
+  }
 const Dashboard: React.FC = () => {
   const [selectedTimeRange, setSelectedTimeRange] = useState('24h');
   const [selectedEnergyType, setSelectedEnergyType] = useState('solar');
   const [city, setCity] = useState("Silchar");
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
 
   const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);
   };
 
+  
   const fetchWeather = async (city: string) => {
     try{
       const res = await axios.get(

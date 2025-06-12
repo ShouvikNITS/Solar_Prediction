@@ -1,3 +1,17 @@
+  const generateDates = (days: number) => {
+    const dates = [];
+    const today = new Date();
+    
+    for (let i = 0; i < days; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      dates.push(date.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric' 
+      }));
+    }
+    return dates;
+  };
 // API service for renewable energy forecasting
 export interface WeatherData {
   temperature: number;
@@ -47,7 +61,7 @@ export interface Prediction {
 
 export interface ForecastResponse {
   success: boolean;
-  data: {
+  data?: {
     location: string;
     forecastPeriod: number;
     predictions: {
@@ -58,15 +72,15 @@ export interface ForecastResponse {
       weather: string;
       temperature: number;
     }[];
-    summary: {
-      totalExpected: number;
-      peakProduction: number;
-      peakTime: string;
-      averageConfidence: number;
+    // summary: {
+    //   totalExpected: number;
+    //   peakProduction: number;
+    //   peakTime: string;
+    //   averageConfidence: number;
+    // };
+    // insights: string[];
+    // recommendations: string[];
     };
-    insights: string[];
-    recommendations: string[];
-  };
   error?: string;
 }
 const generateForecastDates = (days: number): string[] => {
@@ -210,14 +224,28 @@ export const fetchEnergyForecast = async (request: ForecastRequest): Promise<For
       throw new Error(`API Error: ${response.status}`);
     }
 
-    const data = await response.json();
-    
-    return data;
+    const pred_response = await response.json();
+    console.log('API response data:', pred_response);
+    const predictions = generateDates(request.days).map((date, index) => ({
+          date,
+          solar: pred_response.data.map((val:any)=> parseFloat(val.toFixed(2)))[index] ,
+          wind: 0,
+          confidence: Math.round(85 + Math.random() * 10), // Mock confidence
+          weather: ['sunny', 'sunny', 'cloudy', 'rainy', 'partly-cloudy', 'sunny', 'sunny'][index],
+          temperature: [24, 26, 22, 18, 23, 27, 25][index]
+        }));
+    return {
+      success: true,
+      data: {
+      location: request.location,
+      forecastPeriod: request.days,
+      predictions: predictions,
+        },      
+    };
   } catch (error) {
     return {
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error occurred',
-      data: null
+      error: error instanceof Error ? error.message : 'Unknown error occurred'
     };
   }
 };

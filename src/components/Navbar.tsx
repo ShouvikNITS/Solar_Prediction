@@ -12,7 +12,9 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
 
-    const isActive = (path : string) => usePathname() === path
+    const pathname = usePathname();
+
+    const isActive = (path : string) => pathname=== path
 
     const navItems = [
     { path: '/', label: 'Home' },

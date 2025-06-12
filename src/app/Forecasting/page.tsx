@@ -4,10 +4,11 @@ import { Calendar, MapPin, Sun, Wind, CloudRain, TrendingUp, Activity, Zap, Aler
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { fetchEnergyForecast, ForecastRequest, ForecastResponse } from '../services/forecastingApi';
 
+  
 const Forecasting: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState('Assam, India');
   const [forecastDays, setForecastDays] = useState(7);
-  const [energyType, setEnergyType] = useState<'solar' | 'wind' | 'both'>('both');
+  const [energyType, setEnergyType] = useState<'solar' | 'wind' | 'both'>('solar');
   const [isLoading, setIsLoading] = useState(false);
   const [forecastData, setForecastData] = useState<ForecastResponse['data'] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -72,18 +73,8 @@ const Forecasting: React.FC = () => {
       const response = await fetchEnergyForecast(request);
       console.log('Forecast API response:', response);
       if (response.success && response.data) {
-        const ForecastData = generateDates(forecastDays).map((date, index) => ({
-          date,
-          solar: (response.data).map(val => parseFloat(val.toFixed(2)))[index],
-          wind: null,
-          weather: ['sunny', 'sunny', 'cloudy', 'rainy', 'partly-cloudy', 'sunny', 'sunny'][index],
-          temperature: [24, 26, 22, 18, 23, 27, 25][index]
-        }));
-        setForecastData({
-          location: selectedLocation,
-          forecastPeriod: forecastDays,
-          predictions:ForecastData
-        });
+        
+        setForecastData(response.data);
       } else {
         console.error('Forecast API error:', response.error);
         setError(response.error || 'Failed to fetch forecast data');
@@ -98,7 +89,7 @@ const Forecasting: React.FC = () => {
 
   // Use API data if available, otherwise use default data
   const displayData = forecastData?.predictions || defaultForecastData;
-  const summaryData = forecastData?.summary;
+  const summaryData = null;
 
   // Custom tooltip formatter for charts
   const customTooltip = ({ active, payload, label }: any) => {
@@ -175,9 +166,9 @@ const Forecasting: React.FC = () => {
                   className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500"
                   disabled={isLoading}
                 >
-                  <option value="both">Solar + Wind</option>
                   <option value="solar">Solar Only</option>
                   <option value="wind">Wind Only</option>
+                  <option value="both">Solar + Wind</option>
                 </select>
               </div>
               
@@ -230,15 +221,18 @@ const Forecasting: React.FC = () => {
                   <TrendingUp className="w-6 h-6 text-emerald-400" />
                 </div>
                 <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
-                  {summaryData?.averageConfidence || 92}% Confidence
+                  {/* {summaryData?.averageConfidence || 92}% Confidence */}
+                  {92}% Confidence
                 </span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                {summaryData?.peakProduction || 2340} kWh
+                {/* {summaryData?.peakProduction || 2340} kWh */}
+                { 2340} kWh
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">Expected Peak Production</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                {summaryData?.peakTime || 'Tomorrow at 2:30 PM'}
+                {/* {summaryData?.peakTime || 'Tomorrow at 2:30 PM'} */}
+                { 'Tomorrow at 2:30 PM'}
               </p>
             </div>
 
@@ -248,11 +242,13 @@ const Forecasting: React.FC = () => {
                   <Activity className="w-6 h-6 text-blue-400" />
                 </div>
                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-full">
-                  {summaryData?.averageConfidence || 92}% Accuracy
+                  {/* {summaryData?.averageConfidence || 92}% Accuracy */}
+                  { 92}% Accuracy
                 </span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                {summaryData?.totalExpected || 18450} kWh
+                { 18450} kWh
+                {/* {summaryData?.totalExpected || 18450} kWh */}
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">{forecastDays}-Day Total Forecast</p>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+15% vs last period</p>
@@ -389,7 +385,8 @@ const Forecasting: React.FC = () => {
             <div className="bg-gradient-to-br from-emerald-900/20 to-blue-900/20 rounded-xl p-8 border border-emerald-800/30">
               <h3 className="text-xl font-semibold text-white mb-6">Key Insights</h3>
               <div className="space-y-4">
-                {(forecastData?.insights || [
+                {/* {(forecastData?.insights || [ */}
+                {( [
                   `${selectedLocation} shows optimal conditions for renewable energy generation.`,
                   'Weather patterns indicate favorable solar production in the coming days.',
                   'Wind energy will provide consistent backup during variable solar conditions.'
@@ -405,7 +402,11 @@ const Forecasting: React.FC = () => {
             <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-800/30">
               <h3 className="text-xl font-semibold text-white mb-6">Optimization Recommendations</h3>
               <div className="space-y-4">
-                {(forecastData?.recommendations || [
+                {/* {(forecastData?.recommendations || [
+                  'Schedule maintenance during low production periods to maximize uptime.',
+                  'Optimize battery storage capacity to capture excess energy during peak production.',
+                  'Consider grid energy trading opportunities during high production periods.' */}
+                {( [
                   'Schedule maintenance during low production periods to maximize uptime.',
                   'Optimize battery storage capacity to capture excess energy during peak production.',
                   'Consider grid energy trading opportunities during high production periods.'
