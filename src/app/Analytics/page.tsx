@@ -66,16 +66,16 @@ const Analytics: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-gray-900 transition-colors duration-200">
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-4xl font-bold text-white mb-4">
                 Advanced Analytics
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
+              <p className="text-xl text-gray-300 max-w-2xl">
                 Deep insights into renewable energy performance, efficiency trends, and predictive analytics
               </p>
             </div>
@@ -84,7 +84,7 @@ const Analytics: React.FC = () => {
               <select 
                 value={selectedPeriod} 
                 onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="border border-gray-600 rounded-lg px-4 py-2 bg-gray-800 text-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               >
                 <option value="7days">Last 7 Days</option>
                 <option value="30days">Last 30 Days</option>
@@ -92,7 +92,7 @@ const Analytics: React.FC = () => {
                 <option value="year">This Year</option>
               </select>
               
-              <button className="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200">
+              <button className="flex items-center px-4 py-2 border border-gray-600 rounded-lg text-gray-300 hover:bg-gray-700 transition-colors duration-200">
                 <Filter className="w-4 h-4 mr-2" />
                 Filter
               </button>
@@ -109,20 +109,20 @@ const Analytics: React.FC = () => {
             {performanceMetrics.map((metric, index) => {
               const IconComponent = metric.icon;
               const colorClasses = {
-                emerald: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400',
-                blue: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
-                purple: 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400',
-                green: 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400',
+                emerald: 'bg-emerald-900/30 text-emerald-400',
+                blue: 'bg-blue-900/30 text-blue-400',
+                purple: 'bg-purple-900/30 text-purple-400',
+                green: 'bg-green-900/30 text-green-400',
               };
               
               return (
-                <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all duration-200">
+                <div key={index} className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700 hover:shadow-md transition-all duration-200">
                   <div className="flex items-center justify-between mb-4">
                     <div className={`p-3 rounded-xl ${colorClasses[metric.color as keyof typeof colorClasses]}`}>
                       <IconComponent className="w-6 h-6" />
                     </div>
                     <div className={`flex items-center text-sm font-medium px-2 py-1 rounded-full ${
-                      metric.trend === 'up' ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20'
+                      metric.trend === 'up' ? 'text-green-400 bg-green-900/20' : 'text-red-400 bg-red-900/20'
                     }`}>
                       {metric.trend === 'up' ? (
                         <TrendingUp className="w-3 h-3 mr-1" />
@@ -132,8 +132,8 @@ const Analytics: React.FC = () => {
                       {metric.change}
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{metric.value}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">{metric.title}</p>
+                  <h3 className="text-2xl font-bold text-white mb-1">{metric.value}</h3>
+                  <p className="text-gray-300 text-sm">{metric.title}</p>
                 </div>
               );
             })}
@@ -142,29 +142,29 @@ const Analytics: React.FC = () => {
           {/* Charts Section */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {/* Monthly Production Trends */}
-            <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="lg:col-span-2 bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Monthly Production Trends</h3>
+                <h3 className="text-lg font-semibold text-white">Monthly Production Trends</h3>
                 <div className="flex items-center space-x-4 text-sm">
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-orange-400 rounded-full mr-2"></div>
-                    <span className="text-gray-600 dark:text-gray-300">Solar</span>
+                    <span className="text-gray-300">Solar</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600 dark:text-gray-300">Wind</span>
+                    <span className="text-gray-300">Wind</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-3 h-3 bg-gray-400 rounded-full mr-2"></div>
-                    <span className="text-gray-600 dark:text-gray-300">Target</span>
+                    <span className="text-gray-300">Target</span>
                   </div>
                 </div>
               </div>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={monthlyData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
-                  <XAxis dataKey="month" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff" opacity={0.3} />
+                  <XAxis dataKey="month" stroke="#ffffff" />
+                  <YAxis stroke="#ffffff" />
                   <Tooltip 
                     contentStyle={{ 
                       background: 'rgb(31 41 55)', 
@@ -182,8 +182,8 @@ const Analytics: React.FC = () => {
             </div>
 
             {/* System Efficiency */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">System Efficiency</h3>
+            <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700">
+              <h3 className="text-lg font-semibold text-white mb-6">System Efficiency</h3>
               <ResponsiveContainer width="100%" height={350}>
                 <PieChart>
                   <Pie
@@ -218,9 +218,9 @@ const Analytics: React.FC = () => {
                         className="w-3 h-3 rounded-full mr-3"
                         style={{ backgroundColor: item.color }}
                       ></div>
-                      <span className="text-sm text-gray-600 dark:text-gray-300">{item.name}</span>
+                      <span className="text-sm text-gray-300">{item.name}</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-900 dark:text-white">{item.value}%</span>
+                    <span className="text-sm font-medium text-white">{item.value}%</span>
                   </div>
                 ))}
               </div>
@@ -229,38 +229,38 @@ const Analytics: React.FC = () => {
 
           {/* Insights and Recommendations */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-900/20 dark:to-blue-900/20 rounded-xl p-8 border border-emerald-100 dark:border-emerald-800/30">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Key Insights</h3>
+            <div className="bg-gradient-to-br from-emerald-900/20 to-blue-900/20 rounded-xl p-8 border border-emerald-800/30">
+              <h3 className="text-xl font-semibold text-white mb-6">Key Insights</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Solar production increased by 23% compared to last quarter, driven by improved weather conditions and panel optimization.</p>
+                  <p className="text-gray-300">Solar production increased by 23% compared to last quarter, driven by improved weather conditions and panel optimization.</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Wind energy generation shows consistent performance with 92% efficiency, exceeding industry standards.</p>
+                  <p className="text-gray-300">Wind energy generation shows consistent performance with 92% efficiency, exceeding industry standards.</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Peak production hours shifted 30 minutes earlier, suggesting seasonal pattern changes.</p>
+                  <p className="text-gray-300">Peak production hours shifted 30 minutes earlier, suggesting seasonal pattern changes.</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-8 border border-blue-100 dark:border-blue-800/30">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Optimization Opportunities</h3>
+            <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-800/30">
+              <h3 className="text-xl font-semibold text-white mb-6">Optimization Opportunities</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Upgrading battery storage capacity could increase overall system efficiency by an estimated 8-12%.</p>
+                  <p className="text-gray-300">Upgrading battery storage capacity could increase overall system efficiency by an estimated 8-12%.</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Implementing predictive maintenance could reduce downtime by 15% and extend equipment lifespan.</p>
+                  <p className="text-gray-300">Implementing predictive maintenance could reduce downtime by 15% and extend equipment lifespan.</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-gray-700 dark:text-gray-300">Grid integration improvements could optimize energy distribution during peak demand periods.</p>
+                  <p className="text-gray-300">Grid integration improvements could optimize energy distribution during peak demand periods.</p>
                 </div>
               </div>
             </div>

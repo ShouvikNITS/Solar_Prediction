@@ -118,21 +118,21 @@ const Forecasting: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen bg-gray-900 transition-colors duration-200">
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h1 className="text-4xl font-bold text-white mb-4">
               Energy Production Forecasting
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Advanced AI-powered predictions for renewable energy production with weather integration
             </p>
           </div>
 
           {/* Controls */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
+          <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -168,7 +168,7 @@ const Forecasting: React.FC = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Energy Type</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Energy Type</label>
                 <select 
                   value={energyType}
                   onChange={(e) => setEnergyType(e.target.value as 'solar' | 'wind' | 'both')}
@@ -224,10 +224,10 @@ const Forecasting: React.FC = () => {
 
           {/* Forecast Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
-                  <TrendingUp className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                <div className="p-2 bg-emerald-900/30 rounded-lg">
+                  <TrendingUp className="w-6 h-6 text-emerald-400" />
                 </div>
                 <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
                   {summaryData?.averageConfidence || 92}% Confidence
@@ -242,10 +242,10 @@ const Forecasting: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Activity className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                <div className="p-2 bg-blue-900/30 rounded-lg">
+                  <Activity className="w-6 h-6 text-blue-400" />
                 </div>
                 <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-full">
                   {summaryData?.averageConfidence || 92}% Accuracy
@@ -258,12 +258,12 @@ const Forecasting: React.FC = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">+15% vs last period</p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
-                  <AlertTriangle className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                <div className="p-2 bg-orange-900/30 rounded-lg">
+                  <AlertTriangle className="w-6 h-6 text-orange-400" />
                 </div>
-                <span className="text-sm font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-full">
+                <span className="text-sm font-medium text-orange-400 bg-orange-900/20 px-2 py-1 rounded-full">
                   Weather Alert
                 </span>
               </div>
@@ -359,8 +359,8 @@ const Forecasting: React.FC = () => {
           </div>
 
           {/* Weather Integration */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Weather-Integrated Forecast</h3>
+          <div className="bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-700 mb-8">
+            <h3 className="text-lg font-semibold text-white mb-6">Weather-Integrated Forecast</h3>
             <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
               {displayData.slice(0, 7).map((day, index) => (
                 <div key={index} className="text-center p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
@@ -371,12 +371,12 @@ const Forecasting: React.FC = () => {
                   <div className="text-lg font-bold text-gray-900 dark:text-white mb-1">{day.temperature }°C</div>
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-orange-600 dark:text-orange-400">Solar</span>
-                      <span className="font-medium text-gray-900 dark:text-white">{day.solar}%</span>
+                      <span className="text-orange-400">Solar</span>
+                      <span className="font-medium text-gray-300">{day.solar}%</span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-blue-600 dark:text-blue-400">Wind</span>
-                      <span className="font-medium text-gray-900 dark:text-white">{day.wind}%</span>
+                      <span className="text-blue-400">Wind</span>
+                      <span className="font-medium text-gray-300">{day.wind}%</span>
                     </div>
                   </div>
                 </div>
@@ -386,8 +386,8 @@ const Forecasting: React.FC = () => {
 
           {/* Forecast Insights */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-900/20 dark:to-blue-900/20 rounded-xl p-8 border border-emerald-100 dark:border-emerald-800/30">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Key Insights</h3>
+            <div className="bg-gradient-to-br from-emerald-900/20 to-blue-900/20 rounded-xl p-8 border border-emerald-800/30">
+              <h3 className="text-xl font-semibold text-white mb-6">Key Insights</h3>
               <div className="space-y-4">
                 {(forecastData?.insights || [
                   `${selectedLocation} shows optimal conditions for renewable energy generation.`,
@@ -402,8 +402,8 @@ const Forecasting: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-8 border border-blue-100 dark:border-blue-800/30">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Optimization Recommendations</h3>
+            <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl p-8 border border-blue-800/30">
+              <h3 className="text-xl font-semibold text-white mb-6">Optimization Recommendations</h3>
               <div className="space-y-4">
                 {(forecastData?.recommendations || [
                   'Schedule maintenance during low production periods to maximize uptime.',
